@@ -38,6 +38,7 @@ jobs:
           command: |
             . venv/bin/activate
             make lint
+            
 workflows:
   default:
     - build
