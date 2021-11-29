@@ -1,4 +1,5 @@
-<include a CircleCI status badge, here>
+
+[![Coolshreshtha](https://circleci.com/gh/Coolshreshtha/DevOps_Microservices.svg?style=svg)](https://app.circleci.com/insights/github/Coolshreshtha/DevOps_Microservices)
 
 ## Project Overview
 
