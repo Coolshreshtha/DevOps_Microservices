@@ -11,7 +11,7 @@ dockerpath=bchanak/path
 # Authenticate & tag
 echo "Docker ID and Image: microservice"
 docker login --username bchanak
-docker tag microservice $dockerpath
+docker tag mlhousing $dockerpath
 
 # Step 3:
 # Push image to a docker repository

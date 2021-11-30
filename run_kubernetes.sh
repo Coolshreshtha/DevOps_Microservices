@@ -8,7 +8,7 @@ dockerpath=bchanak/path
 
 # Step 2
 # Run the Docker Hub container with kubernetes
-kubectl run microservice --image bchanak/path
+kubectl run mlhousing --image bchanak/path
 
 
 # Step 3:
@@ -17,5 +17,5 @@ kubectl get pods
 
 # Step 4:
 # Forward the container port to a host
-kubectl port-forward microservice 8000:80
+kubectl port-forward mlhousing 8000:80
 
