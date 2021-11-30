@@ -23,26 +23,49 @@ This project uses a Python flask app—in a provided file, `app.py`—that serve
     - docker_out.txt : Output for running ./run_docker.sh and ./make_prediction.sh
     - kubernetes_out.txt : Output for running ./make_prediction.sh after setting up the kubernetes cluster
 
-## Setup the Environment
+## Running the project
+
+### Setting up the environment
 
 * Create a virtualenv with Python 3.7 and activate it. Refer to this link for help on specifying the Python version in the virtualenv. 
 ```bash
 python3 -m pip install --user virtualenv
-# You should have Python 3.7 available in your host. 
-# Check the Python path using `which python3`
-# Use a command similar to this one:
 python3 -m virtualenv --python=<path-to-Python3.7> .devops
 source .devops/bin/activate
 ```
 * Run `make install` to install the necessary dependencies
+* Ensure docker, minikube, hadolint and kubectl are installed. If not installed, run these commands
+```bash
+#Hadolint install linux 
+sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
+sudo chmod +x /bin/hadolint
+
+#Virtual box
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+sudo apt update && sudo apt install virtualbox-6.0
+
+#Minikube
+wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo cp minikube-linux-amd64 /usr/local/bin/minikube
+sudo chmod 755 /usr/local/bin/minikube
+
+#Kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+```
 
 ### Running `app.py`
 
 1. Standalone:  `python app.py`
-2. Run in Docker:  `./run_docker.sh`
-3. Run in Kubernetes:  `./run_kubernetes.sh`
+2. Run in Docker:  `./run_docker.sh` and `./make_prediction.sh` in a different terminal
+3. Run in Kubernetes:  
+    - Setup kubernetes as outlined in the next section
+    - Run `minikube start` and then `./run_kubernetes.sh` to start a kubernetes cluster
+    - run `./make_prediction` in a different terminal
 
-### Kubernetes Steps
+### Kubernetes Setup
 
 * Setup and Configure Docker locally
 * Setup and Configure Kubernetes locally
