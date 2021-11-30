@@ -9,9 +9,9 @@ dockerpath=bchanak/path
 
 # Step 2:  
 # Authenticate & tag
-echo "Docker ID and Image: $dockerpath"
+echo "Docker ID and Image: microservice"
 docker login --username bchanak
-docker tag devopsmicro $dockerpath
+docker tag microservice $dockerpath
 
 # Step 3:
 # Push image to a docker repository
